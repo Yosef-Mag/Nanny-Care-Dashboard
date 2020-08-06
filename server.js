@@ -35,8 +35,6 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-
-
 require("dotenv").config(); // to read .env file
 
 app.post("/AddAdmin", Adminhandlers.adminSignUp);
