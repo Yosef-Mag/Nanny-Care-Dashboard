@@ -3,7 +3,7 @@ import axios from "axios";
 // adding admin func
 export const addadmin = (newUser) => {
   return axios
-    .post("https://nanny-care-dashboard.herokuapp.com/AddAdmin", {
+    .post("http://localhost:5000/AddAdmin", {
       userName: newUser.username,
       password: newUser.password,
     })
@@ -18,7 +18,7 @@ export const addadmin = (newUser) => {
 // adding nanny func
 export const addnanny = (newNanny) => {
   return axios
-    .post("https://nanny-care-dashboard.herokuapp.com/AddNanny", {
+    .post("http://localhost:5000/AddNanny", {
       name: newNanny.name,
       phoneNumber: newNanny.phoneNumber,
       email: newNanny.email,
@@ -41,7 +41,7 @@ export const addnanny = (newNanny) => {
 // login func
 export const adminlogin = (admin) => {
   return axios
-    .post("https://nanny-care-dashboard.herokuapp.com/AdminLogin", {
+    .post("http://localhost:5000/AdminLogin", {
       userName: admin.username,
       password: admin.password,
     })
