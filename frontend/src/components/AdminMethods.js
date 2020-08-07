@@ -18,7 +18,7 @@ export const addadmin = (newUser) => {
 // adding nanny func
 export const addnanny = (newNanny) => {
   return axios
-    .post("https://nanny-care-dashboard.herokuapp.com/AddNanny", {
+    .post("https://nanny-care-dashboard.herokuapp.com:5000/AddNanny", {
       name: newNanny.name,
       phoneNumber: newNanny.phoneNumber,
       email: newNanny.email,
@@ -41,7 +41,7 @@ export const addnanny = (newNanny) => {
 // login func
 export const adminlogin = (admin) => {
   return axios
-    .post("https://nanny-care-dashboard.herokuapp.com/AdminLogin", {
+    .post("https://nanny-care-dashboard.herokuapp.com:5000/AdminLogin", {
       userName: admin.username,
       password: admin.password,
     })

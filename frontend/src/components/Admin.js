@@ -33,7 +33,7 @@ const useStyles = makeStyles({
 export default function AllNanny(props) {
   const [nannylist, setNannylist] = useState([]); // state to hold all nanny records data
   useEffect(() => {
-    fetch(`https://nanny-care-dashboard.herokuapp.com/Admin`)
+    fetch(`https://nanny-care-dashboard.herokuapp.com:5000/Admin`)
       .then((res) => res.json())
       .then((response) => {
         setNannylist(response);
@@ -48,7 +48,7 @@ export default function AllNanny(props) {
   const deleteNanny = (_id) => {
     console.log(_id);
     return axios
-      .delete("https://nanny-care-dashboard.herokuapp.com/delete/" + _id)
+      .delete("https://nanny-care-dashboard.herokuapp.com:5000/delete/" + _id)
       .then(() => window.location.reload())
       .catch((err) => console.log(err.response));
   };
