@@ -48,7 +48,7 @@ export default function AllNanny(props) {
   const deleteNanny = (_id) => {
     console.log(_id);
     return axios
-      .delete("http://localhost:5000/delete/" + _id)
+      .delete("http://localhost:5000/Admin/" + _id)
       .then(() => window.location.reload())
       .catch((err) => console.log(err.response));
   };

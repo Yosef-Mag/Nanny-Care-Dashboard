@@ -41,7 +41,7 @@ app.post("/AddAdmin", Adminhandlers.adminSignUp);
 app.post("/adminLogin", Adminhandlers.adminLogIn);
 app.post("/AddNanny", Adminhandlers.addNewNanny);
 app.get("/Admin", Adminhandlers.retriveAllNanies);
-app.delete("/delete/:id", Adminhandlers.deleteSpecificNany);
+app.delete("/Admin/:id", Adminhandlers.deleteSpecificNany);
 
 const mongoURI = process.env.ATLAS_URI;
 mongoose
