@@ -49,7 +49,7 @@ export default function AllNanny(props) {
     console.log(_id);
     return axios
       .delete("http://localhost:5000/delete/" + _id)
-      .then((props) => history.props.push("/"))
+      .then(() => window.location.reload())
       .catch((err) => console.log(err.response));
   };
 
@@ -60,7 +60,7 @@ export default function AllNanny(props) {
     },
     paper: {
       padding: theme.spacing(1),
-      textAlign: "center",
+      textAlign: 'center',
       color: theme.palette.text.secondary,
     },
   }));
@@ -68,45 +68,44 @@ export default function AllNanny(props) {
 
   return (
     <>
-      <Grid
+    <Grid
         container
-        item
-        xs={4}
+        item xs={4}
         spacing={0}
         direction="column"
         alignItems="center"
         justify="center"
         style={{ minHeight: "90vh" }}
       >
-        {nannylist.map((nany) => (
-          <Card className={classes.root} variant="outlined">
-            <ListItem alignItems="flex-start">
-              <ListItemAvatar>
-                <Avatar alt={nany.name} src={nany.image} />
-              </ListItemAvatar>
-              <ListItemText
-                primary={nany.name}
-                secondary={
-                  <React.Fragment>
-                    <Typography component="span">
-                      Place : {nany.place}
-                      <br />
-                    </Typography>
-                    <Typography component="span">
-                      Email : {nany.email}{" "}
-                    </Typography>
+      {nannylist.map((nany) => (
+        <Card className={classes.root} variant="outlined">
+          <ListItem alignItems="flex-start">
+            <ListItemAvatar>
+              <Avatar alt={nany.name} src={nany.image} />
+            </ListItemAvatar>
+            <ListItemText
+              primary={nany.name}
+              secondary={
+                <React.Fragment>
+                  <Typography component="span">
+                    Place : {nany.place}
                     <br />
-                    <Typography component="span">
-                      phoneNumber : {nany.phoneNumber}
-                    </Typography>
-                  </React.Fragment>
-                }
-              />
-            </ListItem>
-            <Button onClick={() => deleteNanny(nany._id)}> Delete </Button>
-          </Card>
-        ))}
-        <Button onClick={addNanny}> Add new nanny </Button>
+                  </Typography>
+                  <Typography component="span">
+                    Email : {nany.email}{" "}
+                  </Typography>
+                  <br />
+                  <Typography component="span">
+                    phoneNumber : {nany.phoneNumber}
+                  </Typography>
+                </React.Fragment>
+              }
+            />
+          </ListItem>
+          <Button onClick={() => deleteNanny(nany._id)}> Delete </Button>
+        </Card>
+      ))}
+      <Button onClick={addNanny}> Add new nanny </Button>
       </Grid>
     </>
   );
