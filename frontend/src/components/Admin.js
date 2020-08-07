@@ -33,7 +33,7 @@ const useStyles = makeStyles({
 export default function AllNanny(props) {
   const [nannylist, setNannylist] = useState([]); // state to hold all nanny records data
   useEffect(() => {
-    fetch(`/Admin`)
+    fetch(`http://localhost:5000/Admin`)
       .then((res) => res.json())
       .then((response) => {
         setNannylist(response);
@@ -48,8 +48,8 @@ export default function AllNanny(props) {
   const deleteNanny = (_id) => {
     console.log(_id);
     return axios
-      .delete("/delete/" + _id)
-      .then(() => window.location.reload())
+      .delete("http://localhost:5000/delete/" + _id)
+      .then((props) => props.history.push('/'))
       .catch((err) => console.log(err.response));
   };
 
