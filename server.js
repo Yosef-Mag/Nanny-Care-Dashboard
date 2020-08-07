@@ -27,7 +27,7 @@ app.use(
 );
 var port = process.env.PORT || 5000;
 
-if (process.env.NODE_ENV === "production") {
+if ((process.env.NODE_ENV || '').trim() !== 'production') {
   app.use(express.static("frontend/build"));
 
   app.get("*", (req, res) => {
