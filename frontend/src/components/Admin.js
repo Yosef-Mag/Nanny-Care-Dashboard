@@ -34,7 +34,7 @@ const useStyles = makeStyles({
 export default function AllNanny(props) {
   const [nannylist, setNannylist] = useState([]); // state to hold all nanny records data
   useEffect(() => {
-    fetch(`http://0.0.0.0:5000/Admin`)
+    fetch(`http://localhost:5000/Admin`)
       .then((res) => res.json())
       .then((response) => {
         setNannylist(response);
@@ -49,7 +49,7 @@ export default function AllNanny(props) {
   const deleteNanny = (_id) => {
     console.log(_id);
     return axios
-      .delete("http://0.0.0.0:5000/delete/" + _id)
+      .delete("http://localhost:5000/delete/" + _id)
       .then((props) => window.location.reload())
       .catch((err) => console.log(err.response));
   };
