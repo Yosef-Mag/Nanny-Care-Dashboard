@@ -33,7 +33,7 @@ const useStyles = makeStyles({
 export default function AllNanny(props) {
   const [nannylist, setNannylist] = useState([]); // state to hold all nanny records data
   useEffect(() => {
-    fetch(`https//nanny-care-dashboard.herokuapp.com/Admin`)
+    fetch(`http://localhost:5000/Admin`)
       .then((res) => res.json())
       .then((response) => {
         setNannylist(response);
@@ -48,8 +48,8 @@ export default function AllNanny(props) {
   const deleteNanny = (_id) => {
     console.log(_id);
     return axios
-      .delete("http://nanny-care-dashboard.herokuapp.com/delete/" + _id)
-      .then(() => window.location.reload())
+      .delete("http://localhost:5000/delete/" + _id)
+      .then((props) => history.props.push("/"))
       .catch((err) => console.log(err.response));
   };
 
@@ -60,7 +60,7 @@ export default function AllNanny(props) {
     },
     paper: {
       padding: theme.spacing(1),
-      textAlign: 'center',
+      textAlign: "center",
       color: theme.palette.text.secondary,
     },
   }));
@@ -68,44 +68,45 @@ export default function AllNanny(props) {
 
   return (
     <>
-    <Grid
+      <Grid
         container
-        item xs={4}
+        item
+        xs={4}
         spacing={0}
         direction="column"
         alignItems="center"
         justify="center"
         style={{ minHeight: "90vh" }}
       >
-      {nannylist.map((nany) => (
-        <Card className={classes.root} variant="outlined">
-          <ListItem alignItems="flex-start">
-            <ListItemAvatar>
-              <Avatar alt={nany.name} src={nany.image} />
-            </ListItemAvatar>
-            <ListItemText
-              primary={nany.name}
-              secondary={
-                <React.Fragment>
-                  <Typography component="span">
-                    Place : {nany.place}
+        {nannylist.map((nany) => (
+          <Card className={classes.root} variant="outlined">
+            <ListItem alignItems="flex-start">
+              <ListItemAvatar>
+                <Avatar alt={nany.name} src={nany.image} />
+              </ListItemAvatar>
+              <ListItemText
+                primary={nany.name}
+                secondary={
+                  <React.Fragment>
+                    <Typography component="span">
+                      Place : {nany.place}
+                      <br />
+                    </Typography>
+                    <Typography component="span">
+                      Email : {nany.email}{" "}
+                    </Typography>
                     <br />
-                  </Typography>
-                  <Typography component="span">
-                    Email : {nany.email}{" "}
-                  </Typography>
-                  <br />
-                  <Typography component="span">
-                    phoneNumber : {nany.phoneNumber}
-                  </Typography>
-                </React.Fragment>
-              }
-            />
-          </ListItem>
-          <Button onClick={() => deleteNanny(nany._id)}> Delete </Button>
-        </Card>
-      ))}
-      <Button onClick={addNanny}> Add new nanny </Button>
+                    <Typography component="span">
+                      phoneNumber : {nany.phoneNumber}
+                    </Typography>
+                  </React.Fragment>
+                }
+              />
+            </ListItem>
+            <Button onClick={() => deleteNanny(nany._id)}> Delete </Button>
+          </Card>
+        ))}
+        <Button onClick={addNanny}> Add new nanny </Button>
       </Grid>
     </>
   );
