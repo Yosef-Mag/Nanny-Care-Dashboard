@@ -77,6 +77,7 @@ export default function AllNanny(props) {
         justify="center"
         style={{ minHeight: "90vh" }}
       >
+        <br /> <br />
       {nannylist.map((nany) => (
         <Card className={classes.root} variant="outlined">
           <ListItem alignItems="flex-start">
