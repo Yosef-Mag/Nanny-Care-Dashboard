@@ -3,7 +3,7 @@ import axios from "axios";
 // adding admin func
 export const addadmin = (newUser) => {
   return axios
-    .post("https://localhost:5000/AddAdmin", {
+    .post("http://localhost:5000/AddAdmin", {
       userName: newUser.username,
       password: newUser.password,
     })
@@ -41,7 +41,7 @@ export const addnanny = (newNanny) => {
 // login func
 export const adminlogin = (admin) => {
   return axios
-    .post("https://localhost:5000/AdminLogin", {
+    .post("http://localhost:5000/AdminLogin", {
       userName: admin.username,
       password: admin.password,
     })
