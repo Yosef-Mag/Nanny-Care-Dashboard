@@ -33,7 +33,7 @@ export default function LoginAdmin(props) {
     };
 
     adminlogin(admin).then((res) => {
-        props.history.push("/Admin");
+      props.history.push("/Admin");
     });
   }
 
