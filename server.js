@@ -36,7 +36,7 @@ if (process.env.NODE_ENV === "production") {
 }
 res.setHeader(
   "Access-Control-Allow-Origin",
-  "https://nanny-care-dashboard.herokuapp.com/"
+  "https://nanny-care-dashboard.herokuapp.com"
 );
 
 require("dotenv").config(); // to read .env file
