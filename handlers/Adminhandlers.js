@@ -54,8 +54,6 @@ module.exports = {
   },
 
   adminSignUp: function (req, res) {
-    console.log(req.body, "body");
-    console.log(req.query, "query");
     var newAdmin = new Admin({
       userName: req.body.userName,
       password: req.body.password,
@@ -127,7 +125,6 @@ module.exports = {
       });
   },
 
-
   retriveAllNanies: function (req, res) {
     Nany.find(function (err, nannies) {
       if (err) {
@@ -137,7 +134,7 @@ module.exports = {
     });
   },
   deleteSpecificNany: function (req, res) {
-    Nany.findOne({_id: req.params.id})
+    Nany.findOne({ _id: req.params.id })
       .then((item) => item.remove().then(() => res.json({ success: true })))
       .catch((err) => res.status(404).json({ success: false }));
   },
@@ -148,20 +145,19 @@ module.exports = {
         .then(() => res.json({ success: true }))
     );
   },
-  addNewNanny: function(req, res) {
+  addNewNanny: function (req, res) {
     const newNanny = new Nany({
-        name: req.body.name,
-        phoneNumber: req.body.phoneNumber,
-        email: req.body.email,
-        place: req.body.place,
-        kidsNum: req.body.kidsNum,
-        cost: req.body.cost,
-        educationLevel: req.body.educationLevel,
-        experianceLevel: req.body.experianceLevel,
-        age: req.body.age,
-        workingHour: req.body.workingHour,
+      name: req.body.name,
+      phoneNumber: req.body.phoneNumber,
+      email: req.body.email,
+      place: req.body.place,
+      kidsNum: req.body.kidsNum,
+      cost: req.body.cost,
+      educationLevel: req.body.educationLevel,
+      experianceLevel: req.body.experianceLevel,
+      age: req.body.age,
+      workingHour: req.body.workingHour,
     });
-    newNanny.save()
-          .then(console.log('added'));
-  }
+    newNanny.save().then(console.log("added"));
+  },
 };
