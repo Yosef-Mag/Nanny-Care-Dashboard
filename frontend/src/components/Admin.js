@@ -48,7 +48,7 @@ export default function AllNanny(props) {
   const deleteNanny = (_id) => {
     console.log(_id);
     return axios
-      .delete("https://nanny-care-dashboard.herokuapp.com/delete/" + _id)
+      .delete("https://nanny-care-dashboard.herokuapp.com//delete/" + _id)
       .then((props) => window.location.reload())
       .catch((err) => console.log(err.response));
   };
