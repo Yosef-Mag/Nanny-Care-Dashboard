@@ -45,7 +45,11 @@ app.delete("/delete/:id", Adminhandlers.deleteSpecificNany);
 
 const mongoURI = process.env.ATLAS_URI;
 mongoose
-  .connect(mongoURI, { useNewUrlParser: true })
+  .connect(mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
   .then(() => console.log("DataBase connected to the server"))
   .catch((err) => console.log(err));
 app.listen(port, () => {
