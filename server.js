@@ -34,10 +34,7 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
   });
 }
-res.setHeader(
-  "Access-Control-Allow-Origin",
-  "https://nanny-care-dashboard.herokuapp.com"
-);
+res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5000');
 
 require("dotenv").config(); // to read .env file
 
